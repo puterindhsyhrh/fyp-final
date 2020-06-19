@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>edu4you | Prediction</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <style>
+    body {
+    font: 14px "Montserrat", sans-serif;
+    line-height: 1.8;
+   }
+  h3 {
+    font-weight: bold;
+    font-size: 30px;
+  }   
+    .bg-1 {
+      background-color: #FFDAB9; 
+      color: #555555;
+    }
+    .bg-2 {
+      background-color: #FFBFA3; 
+      color: #555555;
+    }
+    .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+    .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 14px;
+      letter-spacing: 3px;
+      background-color: #E18D96;
+      color: black;
+      font-weight: bold;
+    }
+    footer {
+      background-color: #F9E1E0;
+      color: #555555
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    footer .glyphicon {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #BC85A3;
+    }
+  </style>
+</head>
+
+<body id="myPage">
+
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{ url_for('home')}}">edu4you</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{ url_for('home')}}">Home</a></li>
+        <li><a href="{{ url_for('fill')}}">Prediction</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+	<div class="container-fluid">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div class="page-header">
+          <h2>Classification Form</h2>
+        </div>
+        <form action="{{ url_for('predict')}}" method="post" class="form-horizontal">
+        <div class="form-group">
+          <label for="age" class="col-sm-2 control-label">Age</label>
+          <div class="col-sm-4">
+          <div class="radio">
+            <label>
+              <input name="age" type="radio" id="age" value="1" required> <= 20
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input name="age" type="radio" id="age" value="2"> >= 21
+            </label>
+          </div>
+          </div>
+
+          <label for="cgpa" class="col-sm-2 control-label">CGPA</label>
+          <div class="col-sm-4">
+          <select name="cgpa" class="form-control" id="cgpa" required>
+            <option value="">Please select</option>
+            <option value="1">Below 2.00</option>
+            <option value="2">2.00 - 2.99</option>
+            <option value="3">3.00 - 3.49</option>
+            <option value="4">3.50 - 4.00</option>
+          </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="gender" class="col-sm-2 control-label">Gender</label>
+          <div class="col-sm-4">
+          <div class="radio">
+            <label>
+              <input name="gender" type="radio" id="gender" value="2" required> Male
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input name="gender" type="radio" id="gender" value="1"> Female
+            </label>
+          </div>
+          </div>
+
+          <label for="mode" class="col-sm-2 control-label">Mode of Study</label>
+          <div class="col-sm-4">
+          <div class="radio">
+            <label>
+              <input name="mode" type="radio" id="mode" value="1" required> Full-time
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input name="mode" type="radio" id="mode" value="2"> Part-time
+            </label>
+          </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="program" class="col-sm-2 control-label">Program</label>
+          <div class="col-sm-10">
+          <select name="program" class="form-control" id="program" required>
+            <option value="">Please select</option>
+            <option value="9">Agriculture</option>
+            <option value="3">Art</option>
+            <option value="1">Business & Administration</option>
+            <option value="7">Education</option>
+            <option value="2">Engineering</option>
+            <option value="6">Health</option>
+            <option value="8">Law</option>
+            <option value="5">Science</option>
+            <option value="4">Social Science</option>
+          </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="institusion" class="col-sm-2 control-label">Institution</label>
+          <div class="col-sm-10">
+          <div class="radio">
+            <label>
+              <input name="institusion" type="radio" id="institusion" value="1" required> UiTM
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input name="institusion" type="radio" id="institusion" value="2"> Others
+            </label>
+          </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="status" class="col-sm-2 control-label">Status</label>
+          <div class="col-sm-10">
+          <div class="radio">
+            <label>
+              <input name="status" type="radio" id="status" value="1" required> Single
+            </label>
+            <label></label>
+            <label>
+              <input name="status" type="radio" id="status" value="2"> Married
+            </label>
+            <label></label>
+            <label>
+              <input name="status" type="radio" id="status" value="3"> Widow/Widower
+            </label>
+          </div>
+      	  </div>
+        </div>
+
+        <div class="form-group">
+          <label for="qualification" class="col-sm-2 control-label">Entrance Qualification</label>
+          <div class="col-sm-4">
+          <select name="qualification" class="form-control" id="qualification" required>
+            <option value="">Please select</option>
+            <option value="4">Asasi</option>
+            <option value="1">Diploma</option>
+            <option value="3">Matriculation</option>
+            <option value="6">SPM</option>
+            <option value="2">STPM</option>
+            <option value="5">Others</option>
+           </select>
+          </div>
+
+          <label for="sponsor" class="col-sm-2 control-label">Sponsorship</label>
+          <div class="col-sm-4">
+          <select name="sponsor" class="form-control" id="sponsor" required>
+            <option value="">Please select</option>
+            <option value="2">Loans</option>
+            <option value="1">Private</option>
+            <option value="4">Government</option>
+            <option value="5">Non-Government</option>
+            <option value="3">Others</option>
+          </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-4 col-sm-8">
+          <button class="btn btn-default" type="submit" name="submit"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Submit</button>
+          <button class="btn btn-default" type="reset"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span> Clear</button>
+          <br><br>
+          </div>
+        </div>
+
+		</form>
+	  </div>
+	</div> 
+	</div>
+
+	<footer class="container-fluid bg-4 text-center">
+    <a href="#myPage" title="To Top">
+      <span class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+    <center><p><b>Copyright © A16454 Puteri Nadiah FYP Website 2020</b></p></center>
+  </footer>
+
+</body>
+</html>
