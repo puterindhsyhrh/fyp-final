@@ -84,7 +84,6 @@
   <br>
   <p><b>Greetings,</b> this is my final year project website. </p>
   <p>I'm developing a website to make a prediction among B40 students in Bachelor's Degree using Machine Learning Algorithm.</p>
-  <!--<p>Data used is from the Kementerian Pelajaran Malaysia (Pengajian Tinggi) and Bahagian Perancangan dan Penyelarasan Dasar (BPPD).</p>-->
   <div class="container">
     <p><b>Algorithm used in training the data:</b></p>
     <p> - AdaBoost </p>
@@ -92,8 +91,8 @@
     <p> - Random Forest </p>
   </div>
   <p>Comparative performance analysis between the three models indicates that</p>
-  <p><b>adaBoost model</b></p>
-  <p>is the best model in predicting student attrition in this study.</p>
+  <p>all models shows same performance in predicting student attrition in this study.</p>
+  <p>However, <b>Adaboost Algorithm</b> is the chosen model used in this website.</p>
   <p>Click the button down below to fill in the classification form and get your prediction result :)</p>
   <a href="{{ url_for('fill')}}" class="btn btn-default">
     <span class="glyphicon glyphicon-search"></span> Prediction
@@ -109,22 +108,6 @@
       <p><span class="glyphicon glyphicon-map-marker"></span> Bangi, Selangor</p>
       <p><span class="glyphicon glyphicon-phone"></span> LinkedIn : Puteri Nadiah</p>
       <p><span class="glyphicon glyphicon-envelope"></span> puterins.work@.com</p>
-    </div>
-    <div class="col-sm-7">
-      <div class="row">
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
-        </div>
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-        </div>
-      </div>
-      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
-      <div class="row">
-        <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-right" type="submit">Send</button>
-        </div>
-      </div>
     </div>
   </div>
 </div>
